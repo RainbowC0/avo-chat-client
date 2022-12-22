@@ -4,8 +4,9 @@
   <requires lib="gtk+" version="3.20"/>
   <template class="login_window" parent="GtkWindow">
     <property name="can-focus">False</property>
-    <property name="resizable">False</property>
+    <property name="modal">True</property>
     <property name="window-position">center</property>
+    <property name="destroy-with-parent">True</property>
     <signal name="destroy" handler="onDestroy" swapped="no"/>
     <child>
       <object class="GtkBox">
@@ -21,22 +22,10 @@
           <object class="GtkImage">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
+            <property name="margin-top">12</property>
+            <property name="margin-bottom">12</property>
             <property name="icon-name">gtk3-demo</property>
             <property name="icon_size">6</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="margin-top">4</property>
-            <property name="margin-bottom">4</property>
-            <property name="label" translatable="yes">Login</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -88,41 +77,15 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox">
+          <object class="GtkButton" id="btn_submit">
+            <property name="label" translatable="yes">Submit</property>
             <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="spacing">5</property>
-            <child>
-              <object class="GtkButton" id="btn_loginin">
-                <property name="label" translatable="yes">Login In</property>
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="receives-default">True</property>
-                <signal name="clicked" handler="onLogin" swapped="no"/>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="pack-type">end</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="btn_signup">
-                <property name="label" translatable="yes">Sign Up</property>
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="receives-default">True</property>
-                <style>
-                  <class name="suggested-action"/>
-                </style>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <signal name="clicked" handler="onSubmit" swapped="no"/>
+            <style>
+              <class name="suggested-action"/>
+            </style>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -136,8 +99,48 @@
       <object class="GtkHeaderBar" id="header">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <property name="has-subtitle">False</property>
         <property name="show-close-button">True</property>
+        <child type="title">
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <child>
+              <object class="GtkRadioButton">
+                <property name="label" translatable="yes">Sign Up</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">False</property>
+                <property name="active">True</property>
+                <property name="draw-indicator">False</property>
+                <property name="group">radiobutton1</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="pack-type">end</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkRadioButton" id="radiobutton1">
+                <property name="label" translatable="yes">Login In</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">False</property>
+                <property name="active">True</property>
+                <property name="draw-indicator">False</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <style>
+              <class name="linked"/>
+            </style>
+          </object>
+        </child>
         <style>
           <class name="flat"/>
         </style>

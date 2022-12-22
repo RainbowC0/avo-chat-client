@@ -56,6 +56,27 @@
             <property name="can-focus">False</property>
             <property name="orientation">vertical</property>
             <child>
+              <object class="GtkSearchBar">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="search-mode-enabled">True</property>
+                <child>
+                  <object class="GtkSearchEntry">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="primary-icon-name">edit-find-symbolic</property>
+                    <property name="primary-icon-activatable">False</property>
+                    <property name="primary-icon-sensitive">False</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkListBox" id="listbox1">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
@@ -191,19 +212,6 @@
                       <object class="GtkBox">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <child>
-                          <object class="GtkImage">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="icon-name">user-available-symbolic</property>
-                            <property name="icon_size">3</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
                         <child>
                           <object class="GtkBox">
                             <property name="visible">True</property>
